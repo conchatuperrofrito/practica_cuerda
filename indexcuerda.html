@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="line-container">
+      <svg
+        viewBox="0 0 309 1878"
+        fill="none"
+        preserveAspectRatio="xMidYMax meet"
+      >
+        <path
+          d="M130 0V335C63.8333 346.667 -45.6 386.8 46 454C160.5 538 191.5 533 218 493.5C244.5 454 306 396.5 218 396.5C147.6 396.5 130 434.833 130 454C130 462.833 130 499 130 573C130 665.5 130 696.5 130 767C130 823.4 44.6667 910.833 2 947.5L187 921.5L284 877C253 827.167 184.9 749.5 160.5 837.5C130 947.5 20 1031.5 103.5 1058C187 1084.5 328 1080 306 1036C284 992 244 948 187 992C130 1036 99.5 1053.5 130 1106.5C160.5 1159.5 42 1291 130 1309C218 1327 275 1247 160.5 1265C68.9 1279.4 46 1332.67 46 1357.5C103.333 1404.5 218 1484.4 218 1428C218 1357.5 267 1331 156.5 1379.5C46 1428 20 1451 103.5 1499C187 1547 323.5 1450 284 1551.5C244.5 1653 160.5 1657.5 160.5 1723.5C160.5 1776.3 160.5 1848.5 160.5 1878"
+          stroke="black"
+        />
+      </svg>
+    </div>
+    <section class="one">
+      <h1 class="scroll" date-rate=".4" date-direction="vertical">
+        ocean stuff
+      </h1>
+    </section>
+    <section class="two">
+      <h1 class="scroll" date-rate=".2" date-direction="vertical">omg stuff</h1>
+      <p>big watermark</p>
+    </section>
+    <script>
+      let path = document.querySelector("path");
+      console.log(path);
+      let pathLength = path.getTotalLength();
+      console.log(pathLength);
+      path.style.strokeDasharray = pathLength + " " + pathLength;
+      path.style.strokeDashoffset = pathLength;
+      window.addEventListener("scroll", () => {
+        var scrollPercentage =
+          (document.documentElement.scrollTop + document.body.scrollTop) /
+          (document.documentElement.scrollHeight -
+            document.documentElement.clientHeight);
+        var drawLength = pathLength * scrollPercentage;
+        path.style.strokeDashoffset = pathLength - drawLength;
+      });
+    </script>
+  </body>
+</html>
